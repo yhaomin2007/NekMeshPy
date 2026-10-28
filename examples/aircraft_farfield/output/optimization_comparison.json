@@ -1,0 +1,34 @@
+{
+  "before": {
+    "global_min_scaled_jacobian_order3": 0.0022539044574086285,
+    "transition_min_scaled_jacobian_order3": 0.0022539044574086285,
+    "tail_transition_min_scaled_jacobian_order3": 0.025007285916990744,
+    "outer_min_scaled_jacobian_order3": 0.1466238748004089,
+    "cells_below_0_01": 18,
+    "cells_below_0_05": 1711,
+    "tail_macro_path_turn_max_deg": 89.6862011248486,
+    "tail_macro_path_turn_p95_deg": 15.474569303568327,
+    "tail_macro_path_adjacent_step_ratio_max": 1.9770075531317617,
+    "tail_macro_path_adjacent_step_ratio_p95": 1.1312077889757552,
+    "tail_outer_macro_edge_ratio_max": 12.304796546983924
+  },
+  "after": {
+    "global_min_scaled_jacobian_order3": 0.08656578224812253,
+    "transition_min_scaled_jacobian_order3": 0.11203818487090429,
+    "tail_transition_min_scaled_jacobian_order3": 0.11996442579440836,
+    "outer_min_scaled_jacobian_order3": 0.4496000258712644,
+    "cells_below_0_01": 0,
+    "cells_below_0_05": 0,
+    "tail_macro_path_turn_max_deg": 25.3461586888373,
+    "tail_macro_path_turn_p95_deg": 9.28323155614914,
+    "tail_macro_path_adjacent_step_ratio_max": 1.3188430833737022,
+    "tail_macro_path_adjacent_step_ratio_p95": 1.1287919721752615,
+    "tail_outer_macro_edge_ratio_max": 8.52271356043808
+  },
+  "definitions": {
+    "tail": "H_* and V_* families plus J_H_root and J_V_root",
+    "scaled_jacobian": "normalized determinant from NekMeshPy, not Nek solver min(J)/max(J)",
+    "path_metrics": "24 transition-layer shared macro-node trajectories, tail-family vertices; step ratio is max(h[k+1]/h[k],h[k]/h[k+1])",
+    "outer_edge_ratio": "longest/shortest edge of each tail-associated macro quadrilateral at the 50 m transition end"
+  }
+}

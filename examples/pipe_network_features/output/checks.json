@@ -1,0 +1,174 @@
+{
+  "n_hexes": 7956,
+  "geometry_order": 3,
+  "corner_points": 9009,
+  "n_blocks": 9,
+  "features": {
+    "wall_bump": {
+      "location": "negative-y wall of vertical branch transition",
+      "z_center_m": 0.24,
+      "axial_support_m": 0.12,
+      "design_peak_height_m": 0.005,
+      "construction": "smooth shared-node warp, inward into fluid"
+    },
+    "baffle": {
+      "location": "positive-x side of main outlet straight tail",
+      "y_start_m": 0.29,
+      "y_end_m": 0.33,
+      "thickness_m": 0.040000000000000036,
+      "main_tail_center_x_m": 0.65,
+      "selection_cut_x_m": 0.671,
+      "removed_hexes": 44,
+      "exposed_wall_faces": 72,
+      "approx_blocked_area_m2": 0.0028486784323673046,
+      "approx_blocked_area_fraction": 0.25187847432807114,
+      "construction": "mesh-aligned stepped rib, not an exact planar chord plate"
+    }
+  },
+  "topology": {
+    "n_elements": 7956,
+    "n_faces": 24818,
+    "n_boundary_faces": 1900,
+    "n_internal_faces": 22918,
+    "n_nonmanifold_faces": 0,
+    "n_open_edges": 0,
+    "n_hanging_points": 0,
+    "n_components": 1,
+    "watertight": true,
+    "conformal": true
+  },
+  "boundary_tags": {
+    "n_rows": 1900,
+    "n_untagged_boundary": 0,
+    "n_tagged_interior": 0
+  },
+  "quality": {
+    "n_elements": 7956,
+    "min": 0.4696763712791417,
+    "max": 0.9996407042063407,
+    "mean": 0.9224953012328903,
+    "median": 0.9750645585680997,
+    "n_inverted": 0,
+    "n_poor": 0
+  },
+  "curved_order_scan": {
+    "orders": [
+      3,
+      5,
+      7
+    ],
+    "min_sj": [
+      0.4696763712791417,
+      0.46967637127914275,
+      0.46967637127912293
+    ],
+    "n_inverted": [
+      0,
+      0,
+      0
+    ],
+    "skipped": []
+  },
+  "linear_re2_order_scan": {
+    "orders": [
+      3,
+      5,
+      7
+    ],
+    "min_sj": [
+      0.46967637127914175,
+      0.46967637127914547,
+      0.4696763712791171
+    ],
+    "n_inverted": [
+      0,
+      0,
+      0
+    ],
+    "skipped": []
+  },
+  "boundary_conditions": {
+    "wall": [
+      "W  ",
+      1
+    ],
+    "inlet": [
+      "v  ",
+      2
+    ],
+    "main_outlet": [
+      "O  ",
+      3
+    ],
+    "branch_outlet": [
+      "O  ",
+      4
+    ],
+    "wall_bump": [
+      "W  ",
+      5
+    ],
+    "baffle": [
+      "W  ",
+      6
+    ]
+  },
+  "re2_roundtrip_passed": true,
+  "overlap_check": {
+    "corner_geometry_overlap_free": true,
+    "curved_global_intersection_certificate": false
+  },
+  "solver_run": "not run",
+  "plan": [
+    {
+      "name": "main_transition",
+      "layers": 10,
+      "diameter_in": 0.1,
+      "diameter_out": 0.12
+    },
+    {
+      "name": "main_90deg_bend",
+      "radius": 0.25,
+      "layers": 20
+    },
+    {
+      "name": "main_tail",
+      "layers": 10,
+      "outlet_center": [
+        0.65,
+        0.44999999999999996,
+        0.0
+      ],
+      "outlet_normal": [
+        1.1102230246251565e-16,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "name": "branch_transition",
+      "layers": 9,
+      "diameter_in": 0.1,
+      "diameter_out": 0.06
+    },
+    {
+      "name": "branch_90deg_bend",
+      "radius": 0.18,
+      "layers": 15
+    },
+    {
+      "name": "branch_tail",
+      "layers": 8,
+      "outlet_center": [
+        0.0,
+        -0.32999999999999996,
+        0.51
+      ],
+      "outlet_normal": [
+        0.0,
+        -1.0,
+        1.1102230246251565e-16
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "description": "One inlet feeds a tee; the main outlet expands and bends 90 degrees, while a smaller branch contracts and bends 90 degrees out of the tee plane.",
+  "units": "m",
+  "junction_diameter": 0.1,
+  "junction_main_half_length": 0.2,
+  "junction_branch_height": 0.15,
+  "main_outlet_diameter": 0.12,
+  "branch_outlet_diameter": 0.06,
+  "main_transition_length": 0.2,
+  "branch_transition_length": 0.18,
+  "main_bend_radius": 0.25,
+  "branch_bend_radius": 0.18,
+  "main_tail_length": 0.2,
+  "branch_tail_length": 0.15,
+  "mesh": {
+    "geometry_order": 3,
+    "half_ring_elements": 8,
+    "radial_layers": 4,
+    "radial_ratio": 0.7,
+    "center_scale": 0.5,
+    "target_axial_length": 0.02,
+    "quality_sampling_orders": [
+      3,
+      5,
+      7
+    ]
+  },
+  "features": {
+    "wall_bump": {
+      "z_center": 0.24,
+      "axial_length": 0.12,
+      "height": 0.005
+    },
+    "baffle": {
+      "tail_fraction_start": 0.25,
+      "tail_fraction_end": 0.45,
+      "cut_fraction_of_radius": 0.35
+    }
+  }
+}

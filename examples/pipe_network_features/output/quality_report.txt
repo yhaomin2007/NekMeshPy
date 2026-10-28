@@ -1,0 +1,27 @@
+7956 hex elements, 9009 points
+elements     : 7956
+scaled Jac   : min=0.4697  mean=0.9225  median=0.9751  max=0.9996
+inverted(<=0): 0
+poor (<0.2)  : 0
+linear (.re2): min=+0.4697  (0 inverted of 7956)
+sampling     : N=7 +0.4697
+linear sampling: N=7 +0.4697
+solver metrics (.re2 map, N=7):
+  GLL grid spacing min/max    : 1.11e-04 5.09e-03
+  Jacobian ratio   min/max/avg: 4.89e-01 9.47e-01 7.31e-01  (nekRS "scaled Jacobian")
+  aspect ratio     min/max/avg: 1.46e+00 1.18e+01 3.85e+00
+  baffle         : 72 faces
+  branch_outlet  : 80 faces
+  inlet          : 80 faces
+  main_outlet    : 80 faces
+  wall           : 1548 faces
+  wall_bump      : 40 faces
+  untagged bdry  : 0 faces
+  interior tags  : 0 rows
+hex elements   : 7956
+faces          : 24818 (1900 boundary, 22918 internal, 0 non-manifold)
+open edges     : 0
+hanging points  : 0
+components     : 1
+watertight     : True
+conformal      : True

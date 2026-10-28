@@ -1,0 +1,106 @@
+{
+  "hexes": 326400,
+  "points": 331962,
+  "nearbody_hexes": 32640,
+  "transition_hexes": 130560,
+  "outer_hexes": 163200,
+  "blocks": 6800,
+  "radius_m": 750.0,
+  "center_m": [
+    34.0,
+    0.0,
+    6.0
+  ],
+  "nearbody_unchanged": true,
+  "interface_faces": 5440,
+  "scaled_jacobian_order3_min": 0.08656578224812253,
+  "quality_scan": {
+    "orders": [
+      5,
+      7
+    ],
+    "min_sj": [
+      0.08656578224806281,
+      0.08656578224770732
+    ],
+    "n_inverted": [
+      0,
+      0
+    ],
+    "skipped": []
+  },
+  "topology": {
+    "n_elements": 326400,
+    "n_faces": 984640,
+    "n_boundary_faces": 10880,
+    "n_internal_faces": 973760,
+    "n_nonmanifold_faces": 0,
+    "n_open_edges": 0,
+    "n_hanging_points": 0,
+    "n_components": 1,
+    "watertight": true,
+    "conformal": true
+  },
+  "tags": {
+    "n_rows": 10880,
+    "n_untagged_boundary": 0,
+    "n_tagged_interior": 0
+  },
+  "outer_radial_growth_ratio": 1.18,
+  "outer_radial_layers": 30,
+  "transition_layers": 24,
+  "boundary_ids": {
+    "aircraft_wall": 1,
+    "farfield": 2
+  },
+  "bc_note": "O is an export placeholder, not a complete external-flow boundary condition setup",
+  "cad_fitted": false,
+  "solver_run": false,
+  "interface_audit": {
+    "matched_faces": 5440,
+    "missing_or_extra_faces": 0,
+    "nearbody_coordinates_and_connectivity_unchanged": true
+  },
+  "domain_clearance": {
+    "min_faceted_boundary_radius_m": 743.041630830704,
+    "CAD_max_radius_m": 34.43637219226132,
+    "conservative_body_to_boundary_distance_lower_bound_m": 708.6052586384427,
+    "lower_bound_in_reference_chords": 101.15244680306434,
+    "reference_chord_m": 7.00532,
+    "meets_100_chord_clearance_bound": true
+  },
+  "re2_roundtrip": {
+    "all_element_corners_exact": true,
+    "elements": 326400,
+    "boundary_codes": {
+      "W": 5440,
+      "O": 5440
+    },
+    "scope": "raw reader comparison without coordinate welding; topology audited on the identical source connectivity"
+  },
+  "macro_overlap_sampling": {
+    "macro_hexes": 19040,
+    "overlapping_pairs": 10,
+    "candidate_pairs": 828337,
+    "tolerance_m": 0.002589964109682641,
+    "method": "batched AABB broad phase and repository sample/plane narrow phase",
+    "seconds": 25.185039043426514,
+    "scope": "near-body and transition macro maps plus linear corner approximations of the spherical outer blocks; not an exhaustive fine-cell intersection proof"
+  },
+  "fine_pair_audit": {
+    "flagged_macro_pairs": 10,
+    "fine_hexes_examined": 256,
+    "fine_overlapping_pairs": 0,
+    "tolerance_m": 2.5965763135009784e-05,
+    "bad_fine_pairs": [],
+    "scope": "actual exported fine-element sample/plane tests for every pair of children of each flagged macro pair"
+  },
+  "trilinear_pair_audit": {
+    "method": "inverse trilinear mapping of 9x9x9 true parametric samples in both directions",
+    "flagged_polyhedral_fine_pairs": 0,
+    "directions_tested": [],
+    "strictly_inside_count": 0,
+    "scope": "finite sampling; not a mathematical nonintersection certificate"
+  },
+  "intersection_audit_note": "Polyhedral flags are retained: planar approximations differ from warped trilinear faces. Inverse-map sampling found no strictly interior crossings among the remaining flagged fine pairs. This is a finite diagnostic, not an exhaustive geometric proof."
+}

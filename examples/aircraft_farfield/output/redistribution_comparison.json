@@ -1,0 +1,37 @@
+{
+  "previous_tail_optimized": {
+    "global_min_scaled_jacobian_order3": 0.08656578224812253,
+    "transition_min_scaled_jacobian_order3": 0.11203818487090429,
+    "tail_transition_min_scaled_jacobian_order3": 0.11996442579440836,
+    "outer_min_scaled_jacobian_order3": 0.4496000258712644,
+    "cells_below_0_10": 16,
+    "cells_below_0_15": 934,
+    "tail_path_turn_max_deg": 25.3461586888373,
+    "tail_path_turn_p95_deg": 9.28323155614914,
+    "tail_adjacent_step_ratio_max": 1.3188430833737022,
+    "tail_adjacent_step_ratio_p95": 1.1287919721752615,
+    "sphere_edge_p95_p05": 5.201920587533926,
+    "sphere_area_p95_p05": 5.9257682854615075,
+    "sphere_max_cell_edge_ratio": 10.366518874864678
+  },
+  "globally_redistributed": {
+    "global_min_scaled_jacobian_order3": 0.08656578224812253,
+    "transition_min_scaled_jacobian_order3": 0.09739796625648389,
+    "tail_transition_min_scaled_jacobian_order3": 0.1109842752333925,
+    "outer_min_scaled_jacobian_order3": 0.34993266924753735,
+    "cells_below_0_10": 18,
+    "cells_below_0_15": 1915,
+    "tail_path_turn_max_deg": 20.909675642779867,
+    "tail_path_turn_p95_deg": 7.044020580059579,
+    "tail_adjacent_step_ratio_max": 1.2185160433435867,
+    "tail_adjacent_step_ratio_p95": 1.1378333485169003,
+    "sphere_edge_p95_p05": 3.834531457194248,
+    "sphere_area_p95_p05": 2.2144420471651536,
+    "sphere_max_cell_edge_ratio": 6.668142814735369
+  },
+  "notes": {
+    "percentile_ratios": "95th percentile divided by 5th percentile; lower is more uniform",
+    "tail": "H_* and V_* families plus J_H_root and J_V_root",
+    "finite_checks": "quality and intersection checks are sampled diagnostics, not mathematical certificates"
+  }
+}
