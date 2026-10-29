@@ -1,0 +1,6 @@
+from pathlib import Path
+import sys,json,hashlib,numpy as np
+sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
+from nekmeshpy import hexmesh
+R=Path(__file__).resolve().parent;O=R/'output';d=np.load(O/'tail_refined.npz');P=d['points'];H=d['hexes'];L=d['layer_nodes'];mesh=hexmesh.HexMesh.from_corners(P,H);t=hexmesh.topology_report(mesh);print(t,flush=True);assert t.n_components==1 and t.conformal and t.watertight and t.n_nonmanifold_faces==0
+faces=mesh.quad_mesh.corners;boundary=hexmesh.boundary_face_ids(mesh);wall=boundary&np.all(np.isin(faces,L[0]),axis=1);outer=boundary&np.all(np.isin(faces,L[-1]),axis=1);assert np.array_equal(wall|outer,boundary);assert wall.sum()==outer.sum()==len(d['wall_quads']);r={'points_sha256':hashlib.sha256(P.tobytes()).hexdigest(),'connectivity_sha256':hashlib.sha256(H.tobytes()).hexdigest(),'topology':t._asdict(),'wall_boundary_quads':int(wall.sum()),'outer_boundary_quads':int(outer.sum()),'connectivity_changed_by_conformal_tensor_subdivision':True,'boundary_faces_only_approved_wall_and_fixed_outer':True,'hanging_interfaces':'Opposite-edge split propagation and common shared-node IDs; topology_report finds no hanging points.'};(O/'volume_topology.json').write_text(json.dumps(r,indent=2))
