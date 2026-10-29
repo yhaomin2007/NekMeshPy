@@ -1,6 +1,6 @@
 # Approved aircraft linear-surface projection: source checkpoint
 
-The corrected projected surface was approved after VTU review on 2026-10-28. Volume deformation remains pending. This source-only checkpoint contains the CAD projection, tip-cap and trailing-edge repairs, validation, visualization and VTU export scripts. It does not include CAD, mesh inputs, generated geometry, or validation data.
+The corrected projected surface was approved after VTU review on 2026-10-28. The subsequent [multilayer volume deformation](../aircraft_volume_multilayer/README.md) now conforms to this approved surface. This source-only checkpoint contains the CAD projection, tip-cap and trailing-edge repairs, validation, visualization and VTU export scripts. It does not include CAD, mesh inputs, generated geometry, or validation data.
 
 ## Reproduce
 
@@ -10,4 +10,4 @@ Run `python rebuild.py` from this directory. The script remaps caps and adjoinin
 
 The scripts are specific to this CAD face numbering and layout. Surface orientation and intersections use finite sampling; they are not volume Jacobian checks or an exact global injectivity proof. The final reports record local linear-face deviations and whether the rebuilt coordinates match the approved checkpoint. Changed geometry requires validation and review before volume work.
 
-No valid volume mesh conforming to the approved surface has yet been delivered. The earlier aircraft_farfield example remains a historical volume baseline.
+The linear volume checkpoint has passed its finite geometric checks; see the linked volume example for the algorithm, validation scope and reproduction instructions. The earlier aircraft_farfield example remains a historical volume baseline.
