@@ -1,0 +1,24 @@
+# NekRS v26.0. Nondimensional incompressible LES; no wall model.
+[GENERAL]
+polynomialOrder = 7
+cubaturePolynomialOrder = 11
+timeStepper = tombo2
+stopAt = endTime
+endTime = 0.1
+dt = targetCFL=0.5 + max=1e-4 + initial=1e-7
+checkpointControl = simulationTime
+checkpointInterval = 0.01
+regularization = hpfrt + nModes=1 + scalingCoeff=1
+
+[MESH]
+file = aircraft.re2
+
+[FLUID PRESSURE]
+residualTol = 1e-6
+
+[FLUID VELOCITY]
+# ID 1: aircraft; ID 2: upstream sphere/tangent belt; ID 3: downstream sphere
+boundaryTypeMap = zeroDirichlet, udfDirichlet, zeroNeumann
+rho = 1.0
+viscosity = 1/5900000
+residualTol = 1e-8

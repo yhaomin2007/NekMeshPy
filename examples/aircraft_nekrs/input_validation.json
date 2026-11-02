@@ -1,0 +1,16 @@
+{
+  "static_v26_input_check": true,
+  "binary_boundary_check": true,
+  "outlet_normals_positive_everywhere": true,
+  "unit_freestream_closed_sphere_relative_flux_error": 0.0,
+  "hexes": 651360,
+  "boundary_faces": {
+    "1": 10856,
+    "2": 4434,
+    "3": 6422
+  },
+  "compiled_udf": false,
+  "solver_run": false,
+  "api_tag": "v26.0",
+  "api_commit": "96b3cf9e5bacede16568826c04a21bc0fe50dc7d"
+}

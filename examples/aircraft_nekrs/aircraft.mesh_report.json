@@ -1,0 +1,22 @@
+{
+  "hexes": 651360,
+  "points": 662338,
+  "reference_length_m": 7.00532,
+  "coordinate_operation": "x_star=x_m/7.00532; no translation or deformation",
+  "exact_scaled_corner_roundtrip": true,
+  "geometry_order": 1,
+  "boundary_faces": {
+    "1": 10856,
+    "2": 4434,
+    "3": 6422
+  },
+  "mixed_farfield_faces_prescribed_inlet": 470,
+  "outlet_rule": "positive outward area-vector x component over entire bilinear face",
+  "boundary_ids": {
+    "1": "no-slip aircraft",
+    "2": "freestream inlet / tangent belt",
+    "3": "pressure outlet"
+  },
+  "source_points_sha256": "59e8b7f76d6068cb55e21df70f8965d23a11f20509922a5e4a093f99d153ba63",
+  "re2_sha256": "b30fa5fc68d3c98d716aea9f1b671092ce883e3c2b8d1ca8a6da8430b5b91508"
+}

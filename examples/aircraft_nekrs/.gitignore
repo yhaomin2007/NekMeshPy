@@ -1,0 +1,8 @@
+*.re2
+*.re2.gz
+*.fld
+*.f?????
+*.log*
+*.npz
+.cache/
+__pycache__/
