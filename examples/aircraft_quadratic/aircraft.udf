@@ -1,0 +1,40 @@
+// NekRS v26.0 API: boundary callbacks and host hooks share this UDF.
+#ifdef __okl__
+void udfDirichlet(bcData *bc)
+{
+  if (isField("fluid velocity")) {
+    bc->uxFluid = 1.0;
+    bc->uyFluid = 0.0;
+    bc->uzFluid = 0.0;
+  } else if (isField("fluid pressure")) {
+    bc->pFluid = 0.0;
+  }
+}
+#endif
+
+void UDF_Setup()
+{
+  if (platform->options.getArgs("RESTART FILE NAME").empty()) {
+    platform->linAlg->fill(nrs->fluid->o_solution().size(), 0.0, nrs->fluid->o_solution());
+    auto o_ux = nrs->fluid->o_solution().slice(0, nrs->fluid->fieldOffset);
+    platform->linAlg->fill(nrs->meshV->Nlocal, 1.0, o_ux);
+    platform->linAlg->fill(nrs->fluid->o_P.size(), 0.0, nrs->fluid->o_P);
+  }
+}
+
+void UDF_ExecuteStep(double time, int tstep)
+{
+  if (tstep % 50 == 0 || nrs->lastStep) {
+    auto mesh = nrs->meshV;
+    for (int id = 1; id <= 3; ++id) {
+      deviceMemory<int> o_id(std::vector<int>{id});
+      const auto flux = mesh->surfaceAreaNormalMultiplyVectorIntegrate(
+          nrs->fluid->fieldOffset, o_id, nrs->fluid->o_solution().slice(
+              0, mesh->dim * nrs->fluid->fieldOffset));
+      if (platform->comm.mpiRank() == 0) {
+        printf("aircraft boundary flux: step=%d time=%.8e id=%d outwardFlux=%.12e\n",
+               tstep, time, id, static_cast<double>(flux));
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+      subroutine usrdat2
+      include 'SIZE'
+      include 'TOTAL'
+
+      integer nq,nlayers,nrecords
+      parameter (nq=10856,nlayers=8,nrecords=5*nq)
+      real*8 delta(3,5,nq)
+      save delta
+      real br(3),bs(3)
+      real alpha0,alpha1,alpha,w(5),dx,dy,dz
+      integer i,j,k,e,eg,q,layer,m,ierr,ncurved
+
+      if (nelgt.ne.60*nq) call exitti('Wrong aircraft mesh size$',1)
+      if (lx1.lt.3) call exitti('Q2 aircraft needs degree >= 2$',1)
+      if (nid.eq.0) then
+         open(unit=81,file='aircraft_q2.bin',status='old',
+     $        access='stream',form='unformatted',iostat=ierr)
+         if (ierr.ne.0) call exitti('Cannot open aircraft_q2.bin$',ierr)
+         read(81,iostat=ierr) delta
+         if (ierr.ne.0) call exitti('Cannot read aircraft_q2.bin$',ierr)
+         close(81)
+      endif
+      call bcast(delta,8*3*nrecords)
+
+      ncurved=0
+      do e=1,nelt
+         eg=lglel(e)
+         layer=(eg-1)/nq
+         if (layer.ge.nlayers) cycle
+         ncurved=ncurved+1
+         q=mod(eg-1,nq)+1
+         alpha0=real(layer)/real(nlayers)
+         alpha1=real(layer+1)/real(nlayers)
+         alpha0=1.0-alpha0**2*(3.0-2.0*alpha0)
+         alpha1=1.0-alpha1**2*(3.0-2.0*alpha1)
+         do k=1,lz1
+            alpha=0.5*((1.0-zgm1(k,3))*alpha0
+     $           +(1.0+zgm1(k,3))*alpha1)
+            do j=1,ly1
+               call aircraft_q2_basis(zgm1(j,2),bs)
+               do i=1,lx1
+                  call aircraft_q2_basis(zgm1(i,1),br)
+                  w(1)=br(2)*bs(1)
+                  w(2)=br(3)*bs(2)
+                  w(3)=br(2)*bs(3)
+                  w(4)=br(1)*bs(2)
+                  w(5)=br(2)*bs(2)
+                  dx=0.0
+                  dy=0.0
+                  dz=0.0
+                  do m=1,5
+                     dx=dx+w(m)*delta(1,m,q)
+                     dy=dy+w(m)*delta(2,m,q)
+                     dz=dz+w(m)*delta(3,m,q)
+                  enddo
+                  xm1(i,j,k,e)=xm1(i,j,k,e)+alpha*dx
+                  ym1(i,j,k,e)=ym1(i,j,k,e)+alpha*dy
+                  zm1(i,j,k,e)=zm1(i,j,k,e)+alpha*dz
+               enddo
+            enddo
+         enddo
+      enddo
+      ncurved=iglsum(ncurved,1)
+      if (ncurved.ne.nlayers*nq)
+     $   call exitti('Wrong aircraft curved element count$',ncurved)
+      if (nid.eq.0) write(6,*) 'Aircraft Q2 cells:',ncurved
+      return
+      end
+
+      subroutine aircraft_q2_basis(x,b)
+      real x,b(3)
+      b(1)=0.5*x*(x-1.0)
+      b(2)=1.0-x*x
+      b(3)=0.5*x*(x+1.0)
+      return
+      end
