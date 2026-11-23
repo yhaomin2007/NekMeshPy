@@ -1,0 +1,13 @@
+# Refined mesh artifacts: generate locally; never commit binaries
+*.re2
+*.bin
+*.vtu
+*.vtk
+*.npz
+*.npy
+*.zip
+*.log
+validation.json
+conformity.json
+reconstruction.json
+__pycache__/
